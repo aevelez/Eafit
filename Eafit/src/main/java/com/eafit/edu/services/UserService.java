@@ -20,4 +20,10 @@ public class UserService implements IUserService{
 		return UserRepository.findAll();
 	}
 
+	@Override
+	public UserEafit CreateUser(UserEafit user) {
+		// TODO Auto-generated method stub
+		return UserRepository.save(user);
+	}
+
 }

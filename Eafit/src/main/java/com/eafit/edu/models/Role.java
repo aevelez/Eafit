@@ -20,7 +20,7 @@ public class Role {
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	 @JoinColumn(name="User_Name")
-	private User UserRole;
+	private UserEafit UserRole;
 	
 	public List<Permmision> getPermmisions() {
 		return Permmisions;
