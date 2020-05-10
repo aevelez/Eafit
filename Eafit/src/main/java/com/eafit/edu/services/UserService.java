@@ -1,6 +1,7 @@
 package com.eafit.edu.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,14 +17,30 @@ public class UserService implements IUserService{
 	
 	@Override
 	public List<UserEafit> GetUsers() {
-		// TODO Auto-generated method stub
-		return UserRepository.findAll();
+				return UserRepository.findAll();
 	}
 
 	@Override
 	public UserEafit CreateUser(UserEafit user) {
-		// TODO Auto-generated method stub
 		return UserRepository.save(user);
+	}
+
+	@Override
+	public boolean ChangePassword(String userName, String newPassword) {
+		
+		try {
+			Optional<UserEafit> user = UserRepository.findById(userName);
+			if(user == null)
+				return false;
+			
+			user.get().setPassword(newPassword);
+			UserRepository.save(user.get());
+			
+			return true;
+		} catch (Exception e) {
+		e.printStackTrace();
+			return false;
+		}
 	}
 
 }

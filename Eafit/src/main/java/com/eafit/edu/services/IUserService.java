@@ -9,5 +9,7 @@ public interface IUserService {
 	List<UserEafit> GetUsers();
 
 	UserEafit CreateUser(UserEafit user);
+
+	boolean ChangePassword(String userName, String newPassword);
 }
 

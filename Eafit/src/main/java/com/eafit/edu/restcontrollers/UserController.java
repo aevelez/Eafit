@@ -1,6 +1,5 @@
 package com.eafit.edu.restcontrollers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +18,22 @@ public class UserController {
 	@Autowired
 	private IUserService UserService;
 		
-	@GetMapping
+	@GetMapping(path = "/api/GetUsers")
 	public List<UserEafit> GetUsers(){
 			
 		return UserService.GetUsers();		
 	}
 	
-	@PostMapping
+	@PostMapping(path = "/api/CreateUser")
 	public UserEafit CreateUser(UserEafit user)
 	{
 		return UserService.CreateUser(user);
+	}
+	
+	@PostMapping(path = "/api/ChangePassword")
+	public boolean ChangePassword(String userName, String newPassword)
+	{
+		return UserService.ChangePassword(userName, newPassword);
 	}
 	
 }

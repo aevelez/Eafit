@@ -15,18 +15,18 @@ public class Role {
 	@Id
 	private String Name ;
 	
-	@OneToMany(targetEntity=Permmision.class,mappedBy="RolePermmision",fetch=FetchType.EAGER)
-	private List<Permmision> Permmisions;
+	@OneToMany(targetEntity=Permission.class,mappedBy="RolePermmision",fetch=FetchType.EAGER)
+	private List<Permission> Permmisions;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	 @JoinColumn(name="User_Name")
 	private UserEafit UserRole;
 	
-	public List<Permmision> getPermmisions() {
+	public List<Permission> getPermmisions() {
 		return Permmisions;
 	}
 
-	public void setPermmisions(List<Permmision> permmisions) {
+	public void setPermmisions(List<Permission> permmisions) {
 		Permmisions = permmisions;
 	}
 

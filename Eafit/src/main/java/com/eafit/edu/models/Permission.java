@@ -7,7 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Permmision {
+public class Permission {
 
 	@Id
 	private String Name ;
