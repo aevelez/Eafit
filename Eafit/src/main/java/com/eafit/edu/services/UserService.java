@@ -22,7 +22,12 @@ public class UserService implements IUserService{
 
 	@Override
 	public UserEafit CreateUser(UserEafit user) {
-		return UserRepository.save(user);
+		Optional<UserEafit> userBD = UserRepository.findById(user.getName());
+		
+		if(!userBD.isPresent())
+			return UserRepository.save(user);
+		else 
+			return null;
 	}
 
 	@Override

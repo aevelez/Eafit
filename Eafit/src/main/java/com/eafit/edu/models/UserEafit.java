@@ -7,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class UserEafit {
@@ -42,7 +42,7 @@ public class UserEafit {
 	@Column()
 	private Date  LastLoginDate;
 	
-	@OneToMany(targetEntity=Role.class,mappedBy = "UserRole",fetch=FetchType.EAGER)
+	@ManyToMany(targetEntity=Role.class,mappedBy = "UserRole",fetch=FetchType.EAGER)
 	private List<Role> Roles;
 	
 	
