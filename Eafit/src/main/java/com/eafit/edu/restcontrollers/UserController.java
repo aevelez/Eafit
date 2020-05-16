@@ -32,4 +32,10 @@ public class UserController {
 	}
 	
 	//Terminar trabajo
+	@PostMapping(path = "/api/ChangePassword")
+	public boolean ChangePassword(String userName, String newPassword)
+	{
+		return UserService.ChangePassword(userName, newPassword);
+	}
+	
 }
