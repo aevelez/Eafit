@@ -15,7 +15,7 @@ public class UserRolesController {
 	@Autowired
 	private IUserRolesService UserRolesService;
 	
-	@PostMapping(path = "/api/AddUserRole")
+	@PostMapping(path = "/api/AddUserRoles")
 	public boolean AddUserRole(String userName, String roleName)
 	{
 		return UserRolesService.AddUserRole(userName, roleName);
