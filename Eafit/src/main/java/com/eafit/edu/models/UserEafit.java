@@ -133,4 +133,8 @@ public class UserEafit {
 	public void setRoles(List<Role> roles) {
 		Roles = roles;
 	}
+	
+	public void addRole(Role role) {
+		Roles.add(role) ;
+	}
 }

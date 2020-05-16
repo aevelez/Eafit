@@ -21,19 +21,19 @@ public class RoleController {
 	@Autowired
 	private IRoleService RoleService;
 	
-	@GetMapping(path = "/api/Role/GetRoles")
+	@GetMapping(path = "/api/GetRoles")
 	public List<Role> GetRoles(){
 			
 		return RoleService.GetRoles();		
 	}
 	
-	@PostMapping(path = "/api/Role/CreateRole")
+	@PostMapping(path = "/api/CreateRole")
 	public Role CreateRole(@RequestBody Role role)
 	{
 		return RoleService.CreateRole(role);
 	}
 	
-	@DeleteMapping(path = "/api/Role/DeleteRole")
+	@DeleteMapping(path = "/api/DeleteRole")
 	public boolean DeleteRole(String roleName)
 	{
 		return RoleService.DeleteRole(roleName);
