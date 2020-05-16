@@ -1,27 +1,40 @@
 package com.eafit.edu.restcontrollers;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.eafit.edu.models.User;
+import com.eafit.edu.models.UserEafit;
+import com.eafit.edu.services.IUserService;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-	
-	@GetMapping
-	public List<User> GetUsers(){
-	
-		User user= new User();
-		user.setName("Alex");
-		List<User> users= new ArrayList<>();
-		users.add(user);
-		return users;
+	@Autowired
+	private IUserService UserService;
 		
+	@GetMapping(path = "/api/GetUsers")
+	public List<UserEafit> GetUsers(){
+			
+		return UserService.GetUsers();		
 	}
+	
+	@PostMapping(path = "/api/CreateUser")
+	public UserEafit CreateUser(@RequestBody UserEafit user)
+	{
+		return UserService.CreateUser(user);
+	}
+	
+	@PostMapping(path = "/api/ChangePassword")
+	public boolean ChangePassword(String userName, String newPassword)
+	{
+		return UserService.ChangePassword(userName, newPassword);
+	}
+	
 }
