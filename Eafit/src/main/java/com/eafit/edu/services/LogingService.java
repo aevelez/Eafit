@@ -15,7 +15,7 @@ public class LogingService implements ILogingService{
 	private IUserRepository UserRepository;
 	
 	@Override
-	public boolean Log(String userName, String password) {
+	public UserEafit Log(String userName, String password) {
 		
 		Optional<UserEafit> userBD=  UserRepository.findById(userName);
 		
@@ -23,11 +23,11 @@ public class LogingService implements ILogingService{
 		{
 			if (userBD.get().getPassword().equals(password))
 			{
-				return true;
+				return userBD.get();
 			}
-			return false;
+			return null;
 		}
-		return false;
+		return null;
 	}
 	
 	@Override
