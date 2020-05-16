@@ -31,6 +31,7 @@ public class UserController {
 		return UserService.CreateUser(user);
 	}
 	
+	//Terminar trabajo
 	@PostMapping(path = "/api/ChangePassword")
 	public boolean ChangePassword(String userName, String newPassword)
 	{
