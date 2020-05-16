@@ -30,22 +30,6 @@ public class UserService implements IUserService{
 			return null;
 	}
 
-	@Override
-	public boolean ChangePassword(String userName, String newPassword) {
-		
-		try {
-			Optional<UserEafit> user = UserRepository.findById(userName);
-			if(user == null)
-				return false;
-			
-			user.get().setPassword(newPassword);
-			UserRepository.save(user.get());
-			
-			return true;
-		} catch (Exception e) {
-		e.printStackTrace();
-			return false;
-		}
-	}
+	
 
 }

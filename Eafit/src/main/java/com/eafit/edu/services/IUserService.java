@@ -10,6 +10,5 @@ public interface IUserService {
 
 	UserEafit CreateUser(UserEafit user);
 
-	boolean ChangePassword(String userName, String newPassword);
 }
 

@@ -30,11 +30,6 @@ public class UserController {
 	{
 		return UserService.CreateUser(user);
 	}
-	
-	@PostMapping(path = "/api/ChangePassword")
-	public boolean ChangePassword(String userName, String newPassword)
-	{
-		return UserService.ChangePassword(userName, newPassword);
-	}
+		
 	
 }
