@@ -30,7 +30,7 @@ public class UserRolesService implements IUserRolesService{
 			if(roleBD.isPresent())
 			{
 				UserEafit user = userBD.get();
-				user.addRole(roleBD.get());
+				user.getRoles().add(roleBD.get());
 				UserRepository.save(user);
 				return true;
 			}

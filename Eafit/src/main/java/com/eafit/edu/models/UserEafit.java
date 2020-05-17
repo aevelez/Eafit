@@ -1,8 +1,10 @@
 package com.eafit.edu.models;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -42,8 +44,8 @@ public class UserEafit {
 	@Column()
 	private Date  LastLoginDate;
 	
-	@ManyToMany(targetEntity=Role.class,mappedBy = "UserRole",fetch=FetchType.EAGER)
-	private List<Role> Roles;
+	@ManyToMany(targetEntity=Role.class,mappedBy = "UserRole",fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private Set<Role> Roles= new HashSet<>();
 	
 	
 	public String getName() {
@@ -126,15 +128,11 @@ public class UserEafit {
 		FullBusinessTitle = fullBusinessTitle;
 	}
 		
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return Roles;
 	}
 	
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		Roles = roles;
-	}
-	
-	public void addRole(Role role) {
-		Roles.add(role) ;
 	}
 }

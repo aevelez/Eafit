@@ -1,7 +1,9 @@
 package com.eafit.edu.models;
 
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -13,17 +15,17 @@ public class Role {
 	@Id
 	private String Name ;
 	
-	@ManyToMany(targetEntity=Permission.class,mappedBy="RolePermmisions",fetch=FetchType.EAGER)
-	private List<Permission> Permmisions;
+	@ManyToMany(targetEntity=Permission.class,mappedBy="RolePermmisions",fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private Set<Permission> Permmisions = new HashSet<Permission>();
 
-	@ManyToMany(targetEntity=UserEafit.class)
-	private List<UserEafit> UserRole;
+	@ManyToMany(targetEntity=UserEafit.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private Set<UserEafit> UserRole = new HashSet<UserEafit>();
 	
-	public List<Permission> getPermmisions() {
+	public Set<Permission> getPermmisions() {
 		return Permmisions;
 	}
 
-	public void setPermmisions(List<Permission> permmisions) {
+	public void setPermmisions(Set<Permission> permmisions) {
 		Permmisions = permmisions;
 	}
 
