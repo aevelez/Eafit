@@ -3,9 +3,7 @@ package com.eafit.edu.models;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
@@ -15,7 +13,7 @@ public class Permission {
 	@Id
 	private String Name ;
 
-	@ManyToMany(targetEntity=Role.class,fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@ManyToMany(targetEntity=Role.class,mappedBy = "Permmisions")
 	private Set<Role> RolePermmisions = new HashSet<Role>();
 	
 	public String getName() {

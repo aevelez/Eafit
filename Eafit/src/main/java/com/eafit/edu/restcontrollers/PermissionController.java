@@ -20,19 +20,19 @@ public class PermissionController {
 	@Autowired
 	private IPermissionService PermissionService;
 	
-	@GetMapping(path = "/api/Permission/GetPermissions")
+	@GetMapping(path = "/api/GetPermissions")
 	public List<Permission> GetPermissions(){
 			
 		return PermissionService.GetPermissions();		
 	}
 	
-	@PostMapping(path = "/api/Permission/CreatePermission")
+	@PostMapping(path = "/api/CreatePermission")
 	public Permission CreatePermission(@RequestBody Permission permission)
 	{
 		return PermissionService.CreatePermission(permission);
 	}
 	
-	@DeleteMapping(path = "/api/Permission/DeletePermission")
+	@DeleteMapping(path = "/api/DeletePermission")
 	public boolean DeletePermission(String permissionName)
 	{
 		return PermissionService.DeletePermission(permissionName);

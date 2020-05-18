@@ -9,6 +9,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -44,7 +46,12 @@ public class UserEafit {
 	@Column()
 	private Date  LastLoginDate;
 	
-	@ManyToMany(targetEntity=Role.class,mappedBy = "UserRole",fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	 @JoinTable(
+		        name = "rel_users_roles",
+		        joinColumns = @JoinColumn(name = "FK_UserEafit", nullable = false),
+		        inverseJoinColumns = @JoinColumn(name="FK_Role", nullable = false)
+		    )
+	@ManyToMany(targetEntity=Role.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Set<Role> Roles= new HashSet<>();
 	
 	
