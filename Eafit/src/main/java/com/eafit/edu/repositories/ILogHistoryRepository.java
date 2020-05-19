@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.eafit.edu.models.LogHistory;
 
 @Repository
-public interface ILogHistoryRepository extends JpaRepository<LogHistory,String>{
+public interface ILogHistoryRepository extends JpaRepository<LogHistory,Integer>{
 
 }

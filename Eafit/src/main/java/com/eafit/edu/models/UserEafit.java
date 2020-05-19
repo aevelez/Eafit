@@ -42,10 +42,7 @@ public class UserEafit {
 	
 	@Column()
 	private Date  RegistrationDate;
-	
-	@Column()
-	private Date  LastLoginDate;
-	
+		
 	 @JoinTable(
 		        name = "rel_users_roles",
 		        joinColumns = @JoinColumn(name = "FK_UserEafit", nullable = false),
@@ -86,15 +83,7 @@ public class UserEafit {
 	public void setInactive(boolean inactive) {
 		Inactive = inactive;
 	}
-	
-	public Date getLastLoginDate() {
-		return LastLoginDate;
-	}
-	
-	public void setLastLoginDate(Date lastLoginDate) {
-		LastLoginDate = lastLoginDate;
-	}
-	
+		
 	public Date getRegistrationDate() {
 		return RegistrationDate;
 	}
