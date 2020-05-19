@@ -30,6 +30,13 @@ public class UserService implements IUserService{
 			return null;
 	}
 
-	
-
+	@Override
+	public UserEafit UpdateUser(UserEafit user) {
+		Optional<UserEafit> userBD = UserRepository.findById(user.getName());
+		
+		if(userBD.isPresent())
+			return UserRepository.save(user);
+		else 
+			return null;
+	}
 }

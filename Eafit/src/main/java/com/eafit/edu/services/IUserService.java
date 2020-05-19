@@ -9,6 +9,7 @@ public interface IUserService {
 	List<UserEafit> GetUsers();
 
 	UserEafit CreateUser(UserEafit user);
+	UserEafit UpdateUser(UserEafit user);
 
 }
 

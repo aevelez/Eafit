@@ -22,8 +22,7 @@ public class RolePermissionsService implements IRolePermissionsService{
 	@Override
 	public boolean AddRolePermission(String roleName, String permissionName) {
 		
-	Optional<Role> roleBD = 	RoleRepository.findById(roleName);
-		
+		Optional<Role> roleBD = RoleRepository.findById(roleName);
 		if(roleBD.isPresent())
 		{
 			Optional<Permission> permissionBD = PermissionRepository.findById(permissionName);
@@ -37,6 +36,23 @@ public class RolePermissionsService implements IRolePermissionsService{
 			return false;
 		}	
 		return false;
-		
-		}
 	}
+	
+	@Override
+	public boolean DeleteRolePermission(String roleName, String permissionName) {
+		Optional<Role> roleBD = RoleRepository.findById(roleName);
+		if(roleBD.isPresent())
+		{
+			Optional<Permission> permissionBD = PermissionRepository.findById(permissionName);
+			if(permissionBD.isPresent())
+			{
+				Role role = roleBD.get();
+				role.getPermmisions().remove(permissionBD.get());
+				RoleRepository.save(role);
+				return true;
+			}
+			return false;
+		}	
+		return false;
+	}
+}

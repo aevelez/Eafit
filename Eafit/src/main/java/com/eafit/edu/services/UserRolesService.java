@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.eafit.edu.models.Permission;
 import com.eafit.edu.models.Role;
 import com.eafit.edu.models.UserEafit;
 import com.eafit.edu.repositories.IRoleRepository;
@@ -39,4 +40,23 @@ public class UserRolesService implements IUserRolesService{
 		return false;
 		
 		}
+	
+	@Override
+	public boolean DeleteUserRole(String userName, String roleName) {
+		
+		Optional<UserEafit> userBD = UserRepository.findById(userName);
+		if(userBD.isPresent())
+		{
+			Optional<Role> roleBD = RoleRepository.findById(roleName);
+			if(roleBD.isPresent())
+			{
+				UserEafit user = userBD.get();
+				user.getRoles().remove(roleBD.get());
+				UserRepository.save(user);
+				return true;
+			}
+			return false;
+		}	
+		return false;
 	}
+}
